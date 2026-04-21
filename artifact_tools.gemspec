@@ -11,7 +11,7 @@ Gem::Specification.new do |s|
   s.metadata['rubygems_mfa_required'] = 'true'
   s.license = 'MIT'
 
-  s.required_ruby_version = '> 2.7.0'
+  s.required_ruby_version = '> 3.2.0' , "< 4.1.0"
 
   s.files = Dir['lib/**/*.rb'] + Dir['bin/*']
   s.executables << 'artifact_download' << 'artifact_upload'
