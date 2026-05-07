@@ -21,7 +21,7 @@ end
 
 describe ArtifactTools::Uploader do
   ['artifacts.yaml', 'conf_dir/artifacts.yaml'].each do |config_file_path|
-    context "uses #{config_file_path}" do
+    context "with #{config_file_path}" do
       let(:config_file) { config_file_path }
 
       let(:config_file_dir) { File.dirname(config_file_path) }

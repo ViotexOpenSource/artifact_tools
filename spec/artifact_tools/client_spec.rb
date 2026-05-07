@@ -88,7 +88,7 @@ describe ArtifactTools::Client do
       it 'downloads and verifies the file' do
         hash = mock_file_hashes
         expect { client.fetch(verify: true) }.not_to raise_error
-        TEST_FILES.each { |file, _p| expect(hash).to have_received(:file).with(file).once }
+        TEST_FILES.each_key { |file| expect(hash).to have_received(:file).with(file).once }
       end
 
       it 'downloads only specified file' do
@@ -108,28 +108,28 @@ describe ArtifactTools::Client do
     end
 
     context 'when files already downloaded' do
-      let(:files1) { { 'filename' => { 'hash' => '111111111' } } }
-      let(:files2) { { 'filename' => { 'hash' => '222222222' } } }
-      let(:config) { { 'files' => files1 } }
+      let(:files_ones) { { 'filename' => { 'hash' => '111111111' } } }
+      let(:files_twos) { { 'filename' => { 'hash' => '222222222' } } }
+      let(:config) { { 'files' => files_ones } }
 
       it "doesn't download the file if already present with correct hash" do
-        hash = mock_local_file(files: files1)
+        hash = mock_local_file(files: files_ones)
         expect { client.fetch(force: false) }.not_to raise_error
-        files1.each { |file| expect(hash).to have_received(:file).with(file[0]).once }
+        files_ones.each { |file| expect(hash).to have_received(:file).with(file[0]).once }
         expect(MockSSH.session.scp.download_last_remote).to be_nil
       end
 
       it 'downloads the file if already present if forced' do
-        mock_local_file(files: files1)
+        mock_local_file(files: files_ones)
         expect { client.fetch(force: true) }.not_to raise_error
-        expect(MockSSH.session.scp.download_last_remote).to include(files1.keys.first)
+        expect(MockSSH.session.scp.download_last_remote).to include(files_ones.keys.first)
       end
 
       it 'downloads the file if already present with incorrect hash' do
-        hash = mock_local_file(files: files2)
+        hash = mock_local_file(files: files_twos)
         expect { client.fetch(force: false) }.not_to raise_error
-        files2.each { |file| expect(hash).to have_received(:file).with(file[0]).once }
-        expect(MockSSH.session.scp.download_last_remote).to include(files1.keys.first)
+        files_twos.each { |file| expect(hash).to have_received(:file).with(file[0]).once }
+        expect(MockSSH.session.scp.download_last_remote).to include(files_ones.keys.first)
       end
     end
 

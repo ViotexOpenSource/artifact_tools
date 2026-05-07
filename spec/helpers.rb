@@ -65,7 +65,7 @@ end
 
 def mock_local_file(files: TEST_FILES)
   hash = mock_file_hashes(files: files)
-  files.each do |file, _|
+  files.each_key do |file|
     allow(File).to receive(:exist?).with(file).and_return(true)
   end
   hash

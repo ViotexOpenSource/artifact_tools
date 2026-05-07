@@ -67,7 +67,7 @@ module ArtifactTools
       OptionParser.new do |opts|
         opts.banner = "Usage: #{__FILE__} [options]"
         @parse_opts_handlers.each do |args, handler|
-          opts.on(*args) { |v|  handler.call(v, options, opts) }
+          opts.on(*args) { |v| handler.call(v, options, opts) }
         end
       end.parse!(arguments)
 
