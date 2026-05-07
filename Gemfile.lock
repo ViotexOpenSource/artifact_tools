@@ -21,7 +21,7 @@ GEM
     parallel (1.21.0)
     parser (3.0.3.2)
      ast (~> 2.4.1)
-      racc
+     racc
     prism (1.9.0)
     racc (1.8.1)
     rainbow (3.1.1)
@@ -37,7 +37,7 @@ GEM
       rspec-support (~> 3.10.0)
     rspec-expectations (3.10.1)
      diff-lcs (>= 1.2.0, < 2.0)
-      rspec-support (~> 3.13.0)
+     rspec-support (~> 3.13.0)
     rspec-mocks (3.13.8)
       diff-lcs (>= 1.2.0, < 2.0)
       rspec-support (~> 3.13.0)
@@ -57,19 +57,9 @@ GEM
     rubocop-ast (1.49.1)
       parser (>= 3.3.7.2)
       prism (~> 1.7)
-    rubocop-capybara (2.22.1)
+    rubocop-rspec (3.9.0)
       lint_roller (~> 1.1)
-      rubocop (~> 1.72, >= 1.72.1)
-    rubocop-factory_bot (2.28.0)
-      lint_roller (~> 1.1)
-      rubocop (~> 1.72, >= 1.72.1)
-    rubocop-rspec (2.31.0)
-      rubocop (~> 1.40)
-      rubocop-capybara (~> 2.17)
-      rubocop-factory_bot (~> 2.22)
-      rubocop-rspec_rails (~> 2.28)
-    rubocop-rspec_rails (2.29.1)
-      rubocop (~> 1.61)
+      rubocop (~> 1.81)
     ruby-progressbar (1.13.0)
     simplecov (0.22.0)
       docile (~> 1.1)
@@ -80,16 +70,17 @@ GEM
     strscan (3.1.0)
     unicode-display_width (2.1.0)
 PLATFORMS
-  x86_64-linux
+  ruby
+  x86_64-darwin-22
 
 DEPENDENCIES
   artifact_tools!
-  bundler (~> 2.0)
-  rake (~> 12.3)
-  rspec (~> 3.0)
+  bundler (~> 2.4, < 3.0)
+  rake (>= 13.0, < 14.0)
+  rspec (~> 3.13)
   rspec-simplecov (~> 0.2)
-  rubocop-rspec (~> 2.0)
-  simplecov (~> 0.16)
+  rubocop-rspec (~> 3.0)
+  simplecov (~> 0.22)
 
 BUNDLED WITH
-   2.4.19
+   2.7.2
