@@ -11,22 +11,22 @@ Gem::Specification.new do |s|
   s.metadata['rubygems_mfa_required'] = 'true'
   s.license = 'MIT'
 
-  s.required_ruby_version = '> 2.7.0'
+  s.required_ruby_version = '> 3.2.0', '< 4.1.0'
 
   s.files = Dir['lib/**/*.rb'] + Dir['bin/*']
   s.executables << 'artifact_download' << 'artifact_upload'
   s.require_paths = ['lib']
 
-  s.add_dependency 'ed25519', '~> 1.3'
   s.add_dependency 'bcrypt_pbkdf', '~> 1.1'
+  s.add_dependency 'ed25519', '~> 1.3'
   s.add_dependency 'net-scp', '>= 4.0.0pre', '< 5.0'
   s.add_dependency 'net-ssh', '~> 7.0'
 
-  s.add_development_dependency 'bundler', '~> 2.0'
-  s.add_development_dependency 'rake', '~> 12.3'
-  s.add_development_dependency 'rspec', '~> 3.0'
+  s.add_development_dependency 'bundler', '~> 2.4', '< 3.0'
+  s.add_development_dependency 'rake', '>= 13.0', '< 14.0'
+  s.add_development_dependency 'rspec', '~> 3.13'
 
   s.add_development_dependency 'rspec-simplecov', '~> 0.2'
-  s.add_development_dependency 'rubocop-rspec', '~> 2.0'
-  s.add_development_dependency 'simplecov', '~> 0.16'
+  s.add_development_dependency 'rubocop-rspec', '~> 3.0'
+  s.add_development_dependency 'simplecov', '~> 0.22'
 end
